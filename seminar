@@ -30,3 +30,57 @@ Console.Write("Input a quantity of columns");
 int columns = Convert.ToInt32(Console.ReadLine());
 double[,] myArray = CreateRandom2dArray(rows,columns);
 Show2dArray(myArray);
+
+// Задача 50
+int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
+{
+int[,]array = new int [rows, columns];
+    for(int i = 0; i < rows; i ++)
+    {
+        for(int j = columns - 1; j >= 0; j --)
+        {
+            array[i,j] = new Random().Next(minValue, maxValue + 1);
+        }
+    }
+    return array;
+}
+void Show2dArray(int[,] array)
+{
+    for(int i = 0; i < array.GetLength(0); i ++)
+    {
+        for(int j = 0; j < array.GetLength(1); j ++)
+       { 
+        Console.Write(array[i,j] + " ");
+       }
+    Console.WriteLine();
+    }
+       
+Console.WriteLine();    
+}
+void FindElement(int[,] array)
+{
+    Console.Write("Введите номер строки элемента");
+    int rowNum = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Введите номер столбца элемента");
+    int columnNum = Convert.ToInt32(Console.ReadLine());
+    if (rowNum > array.GetLength(0) || columnNum > array.GetLength(1))
+    {
+         Console.WriteLine("Элемент отсутствует");
+    }
+    else
+    {
+        Console.WriteLine($"Значение элемента {rowNum} строки и {columnNum} столбца равно{array[rowNum - 1, columnNum -1]} ");
+    }
+
+}
+Console.Write("Введите количество строк");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество столбцов");
+int сolumns = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение минимального элемента массива");
+int minValue = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение максимального элемента массива");
+int maxValue = Convert.ToInt32(Console.ReadLine());
+int[,] myArray = CreateRandom2dArray(rows, сolumns, minValue, maxValue);
+Show2dArray(myArray);
+FindElement(myArray);
